@@ -9,6 +9,22 @@ public class Position {
         this.column = column;
     }
 
+    public int getRow(){
+        return row;
+    }
+
+    public int getColumn(){
+        return column;
+    }
+    
+    public void setRow(int newRow){
+        this.row = newRow;
+    }
+
+    public void setColumn(int newColumn){
+        this.column = newColumn;
+    }
+    
     public void setValue(int row, int column){
         this.row = row;
         this.column = column;
