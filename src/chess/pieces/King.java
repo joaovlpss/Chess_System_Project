@@ -22,7 +22,7 @@ public class King extends ChessPiece{
     }
 
     @Override
-    public boolean[][] possibleMoves() { // Placeholder method for now.
+    public boolean[][] possibleMoves() { 
         boolean[][] matrix = new boolean[getBoard().getRows()][getBoard().getColumns()];
         Position p = new Position(0, 0);
        
