@@ -63,6 +63,11 @@ public class ChessMatch {
         return (ChessPiece)capturedPiece;
     }
 
+    public boolean[][] possibleMoves(ChessPosition sourcePosition){
+        Position position = sourcePosition.toPosition(); // Converting to normal matrix position
+        validateSourcePosition(position);
+        return board.piece(position).possibleMoves();
+    }
 
     /* Receives ChessPosition column and row values, and a ChessPiece.
      * Passes the values to placePiece, converted to Position values, for compatibility. */
@@ -102,7 +107,7 @@ public class ChessMatch {
             placeNewPiece(column, 7, new Pawn(board, Color.BLACK));
         }
         
-        //Placing white pawns
+        //Placing White pawns
         for (char column = 'a'; column <= 'h'; column++) {
             placeNewPiece(column, 2, new Pawn(board, Color.WHITE));
         }
