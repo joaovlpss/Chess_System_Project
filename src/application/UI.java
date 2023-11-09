@@ -12,6 +12,11 @@ public class UI {
     private static final String ANSI_WHITE = "\u001B[37m"; // White text color
     private static final String ANSI_YELLOW = "\u001B[33m"; // Yellow text color
 
+    public static void clearScreen(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     public static ChessPosition readChessPosition(Scanner sc){
         try{
         String s = sc.nextLine();
@@ -48,4 +53,5 @@ public class UI {
         }
         System.out.print(" "); // Print a space after the piece or dash
     }
+
 }
