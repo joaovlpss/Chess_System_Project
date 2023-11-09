@@ -1,8 +1,10 @@
 package chess;
 
 import boardgame.Board;
+import boardgame.Piece;
 import boardgame.Position;
 import chess.enums.Color;
+import chess.exceptions.ChessException;
 import chess.pieces.Bishop;
 import chess.pieces.King;
 import chess.pieces.Knight;
@@ -27,6 +29,30 @@ public class ChessMatch {
         }
         return matrix;
     }
+
+    private void validateSourcePosition(Position position){
+        if (!board.thereIsAPiece(position)){
+            throw new ChessException("There is no piece on source position.");
+        }
+    }
+
+    private Piece makeMove(Position source, Position target){
+        Piece p = board.removePiece(source);
+        Piece capturedPiece = board.removePiece(target);
+
+        board.placePiece(p, target);
+        return capturedPiece;
+    }
+
+    public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition){
+        Position source = sourcePosition.toPosition();
+        Position target = targetPosition.toPosition();
+        validateSourcePosition(source);
+        
+        Piece capturedPiece = makeMove(source, target);
+        return (ChessPiece)capturedPiece;
+    }
+
 
     /* Receives ChessPosition column and row values, and a ChessPiece.
      * Passes the values to placePiece, converted to Position values, for compatibility. */

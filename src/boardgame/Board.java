@@ -61,4 +61,17 @@ public class Board {
         }
         return piece(position) != null;
     }
+
+    public Piece removePiece(Position position){
+        if(!positionExists(position)){
+            throw new BoardException("Position does not exist. Positions range from a1 - h8");
+        }
+        if(!thereIsAPiece(position)){
+            return null;
+        }
+        Piece aux = piece(position);
+        aux.position = null;
+        pieces[position.getRow()][position.getColumn()] = null;
+        return aux;
+    }
 }
