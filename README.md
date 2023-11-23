@@ -1,2 +1,3 @@
 # Chess_System_Project
-Project for a CLI chess game system.
+Project for a completed CLI chess game system. 
+Run the program with src/application/Program.java.
